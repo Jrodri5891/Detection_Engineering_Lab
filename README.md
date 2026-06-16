@@ -1,4 +1,4 @@
-# 🛡️ Purple Team Detection Engineering Lab
+# 🛡️ Purple Team Detection Engineering La
 
 > A self-built Active Directory environment for **emulating adversary behavior, engineering detections, and automating real-time SOC alerting** — covering the full security-operations lifecycle from telemetry collection to Discord notification.
 
