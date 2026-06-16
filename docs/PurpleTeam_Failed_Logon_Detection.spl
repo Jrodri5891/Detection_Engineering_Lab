@@ -1,0 +1,13 @@
+# ============================================================
+# Detection : Failed Logon / Brute Force
+# ATT&CK    : T1110 - Brute Force ; T1078 - Valid Accounts
+# Source    : Windows Security Event ID 4625 (Failed Logon)  | Index: windows
+# Schedule  : cron */5 * * * *   | Trigger: Number of Results > 0
+# Action    : Discord webhook alert
+# Notes     : Surfaces failed authentication. Captured the Kali attacker
+#             (192.168.56.103 / napls589) during testing.
+# ============================================================
+
+index=* EventCode=4625
+| table _time Source_Network_Address Account_Name Failure_Reason
+| sort -_time

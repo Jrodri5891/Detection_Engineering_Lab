@@ -1,0 +1,13 @@
+# ============================================================
+# Detection : PowerShell Execution (Atomic Red Team)
+# ATT&CK    : T1059.001 - Command and Scripting Interpreter: PowerShell
+# Source    : Sysmon Event ID 1 (Process Creation)  | Index: sysmon
+# Schedule  : cron */5 * * * *   | Trigger: Number of Results > 0
+# Action    : Discord webhook alert
+# Notes     : Flags PowerShell process creations carrying Atomic Red Team
+#             T1059.001 markers (SOAPHound/SharpHound, encoded commands,
+#             NTFS ADS, New-PSSession) on the WIN11 endpoint. Fired 122x.
+# ============================================================
+
+index=* EventCode=1 ComputerName=WIN11.lab.local CommandLine="*T1059*"
+| table _time Image CommandLine User

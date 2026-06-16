@@ -1,0 +1,13 @@
+# ============================================================
+# Detection : Network Share Enumeration
+# ATT&CK    : T1135 - Network Share Discovery
+# Source    : Windows Security 5140/5145 (Share Access) or 4625 (anon SMB)
+# Notes     : enum4linux / smbclient anonymous attempts generated the
+#             telemetry that triggered this detection during testing.
+# >>> REPLACE with your exact saved-search SPL (see Splunk > Settings >
+#     Searches, Reports, and Alerts > PurpleTeam_Share_Enumeration_Detection).
+# ============================================================
+
+index=* (EventCode=5140 OR EventCode=5145 OR (EventCode=4625 Account_Name="ANONYMOUS LOGON"))
+| table _time Source_Network_Address Account_Name Share_Name
+| sort -_time

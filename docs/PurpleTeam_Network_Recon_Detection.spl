@@ -1,0 +1,14 @@
+# ============================================================
+# Detection : Network Service Discovery (Port Scanning)
+# ATT&CK    : T1046 - Network Service Discovery
+# Source    : Sysmon Event ID 3 (Network Connection) / Windows Firewall logs
+# Notes     : nmap-style scans surface as many distinct destination ports
+#             from a single source in a short window.
+# >>> REPLACE with your exact saved-search SPL (see Splunk > Settings >
+#     Searches, Reports, and Alerts > PurpleTeam_Network_Recon_Detection).
+# ============================================================
+
+index=sysmon EventCode=3
+| bin _time span=1m
+| stats dc(DestinationPort) AS distinct_ports by _time, SourceIp
+| where distinct_ports > 20
