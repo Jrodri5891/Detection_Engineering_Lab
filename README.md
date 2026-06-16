@@ -43,7 +43,7 @@ graph LR
 
 **Domain:** `lab.local` (NetBIOS `LAB`) · **OUs:** HR, IT, Finance · **Network:** isolated host-only `192.168.56.0/24`
 
-![Domain Controller](screenshots/WS2022_Working.png)
+<img width="1536" height="864" alt="WS2022_Working" src="https://github.com/user-attachments/assets/0d7515f4-df41-402f-b8d7-3a38e51d7d7d" />
 
 ---
 
@@ -51,7 +51,7 @@ graph LR
 
 **Sysmon** (SwiftOnSecurity config) + **Windows Event Logs** (Security / System / PowerShell) → **Splunk Universal Forwarder** → indexer on `:9997` → **`sysmon`** & **`windows`** indexes, parsed by the Splunk Add-ons for Windows and Sysmon.
 
-![Sysmon telemetry in Splunk](screenshots/Splunk_Event_AtomicRed.png)
+<img width="1897" height="916" alt="Splunk_Event_AtomicRed" src="https://github.com/user-attachments/assets/5b021a70-73c1-40f1-b280-9d2a3fc3a00e" />
 
 ---
 
@@ -65,7 +65,7 @@ graph LR
 | 4 | Brute Force / Valid Accounts | **T1110 / T1078** | Failed logons from Kali | `PurpleTeam_Failed_Logon_Detection` |
 | 5 | Remote Services | **T1021** | Network (Type 3) logons | `PurpleTeam_Network_Logon_Detection` |
 
-![Detections](screenshots/Alerts_Established_.png)
+<img width="1912" height="552" alt="Alerts_Established " src="https://github.com/user-attachments/assets/5c7bdc9a-2720-4a8f-805c-ddeba5e82549" />
 
 ---
 
@@ -77,7 +77,7 @@ graph LR
 
 **Adversary emulation** — Atomic Red Team T1059.001 PowerShell tests executed on the endpoint:
 
-![Atomic Red Team](screenshots/AtomicRedTeam_Test.png)
+<img width="1920" height="955" alt="AtomicRedTeam_Test" src="https://github.com/user-attachments/assets/d71f9626-1090-4d2a-b22c-7a77b2cd3bba" />
 
 ---
 
@@ -90,7 +90,7 @@ index=* EventCode=1 ComputerName=WIN11.lab.local CommandLine="*T1059*"
 | table _time Image CommandLine User
 ```
 
-![Atomic detection](screenshots/Atomic_Red_Splunk.png)
+<img width="1902" height="895" alt="Atomic_Red_Splunk" src="https://github.com/user-attachments/assets/e3a82157-fd5a-433a-a5ce-5b3d58b0e81e" />
 
 **Live attacker capture** — failed-logon detection recovered the Kali host's source IP (`192.168.56.103`) and the account used:
 
@@ -100,7 +100,7 @@ index=* EventCode=4625
 | sort -_time
 ```
 
-![Failed logon — attacker IP & user](screenshots/we_have_user_and_ip.png)
+<img width="1900" height="911" alt="we_have_user_and_ip" src="https://github.com/user-attachments/assets/42ebc9fd-4c69-4ba8-9d72-24376a7a56a6" />
 
 ---
 
@@ -108,7 +108,7 @@ index=* EventCode=4625
 
 Every detection runs on a cron schedule and pushes a **webhook alert** to a dedicated Discord SOC channel (`#splunk-alers`), rendering structured **"Splunk Alert Triggered!"** notifications with the alert name, owner, and a deep link to the results — closing the loop from telemetry to real-time analyst notification.
 
-![Discord alerting](screenshots/Enum_4_Linux_Alert.png)
+<img width="1920" height="955" alt="Enum_4_Linux" src="https://github.com/user-attachments/assets/1e4a3696-34e0-4db1-bc09-88b8e5a1d0c7" />
 
 ---
 
